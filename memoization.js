@@ -1,39 +1,27 @@
 'use strict';
 
-const smartSelector = (() => {
-  const getElementById = ((id) => {
-    let cache = {};
+const smartSelect = (() => {
+  let cache = {};
 
-    return (id) => {
-      if (id in cache) {
-        return cache[id];
-      } else {
-        let select = document.getElementById(id);
+  const querySelector = (query) => {
+    let query = query.charAt(0) === '#' ? query : `#${query}`;
+    let selection = document.querySelector(query);
 
-        cache[id] = select;
-        return select;
-      }
+    if (query in cache) {
+      console.log('Checking cache..');
+      return cache[query];
     }
-  })();
 
-  const querySelector = ((query) => {
-    let cache = {};
+    console.log('Running querySelector');
+    cache[query] = selection;
+    return selection;
+  }
 
-    return (query) => {
-      if (query in cache) {
-        return cache[query];
-      } else {
-        let select = document.querySelector(query);
-
-        cache[query] = select;
-        return select;
-      }
-    }
-  })();
-  
   return {
-    superGetId : getElementById,
     superQuery : querySelector
   }
 })();
 
+smartSelect.superQuery('main');
+smartSelect.superQuery('main');
+smartSelect.superQuery('secondMain');
