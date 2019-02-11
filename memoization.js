@@ -1,19 +1,17 @@
 'use strict';
 
 const smartSelect = (() => {
-  let cache = {};
+  const cache = {};
 
   const querySelector = (query) => {
-    let query = query.charAt(0) === '#' ? query : `#${query}`;
-    let selection = document.querySelector(query);
+    const format = query.charAt(0) === '#' ? query : `#${query}`;
+    const selection = document.querySelector(format);
 
-    if (query in cache) {
-      console.log('Checking cache..');
-      return cache[query];
+    if (format in cache) {
+      return cache[format];
     }
 
-    console.log('Running querySelector');
-    cache[query] = selection;
+    cache[format] = selection;
     return selection;
   }
 
@@ -22,6 +20,7 @@ const smartSelect = (() => {
   }
 })();
 
-smartSelect.superQuery('main');
-smartSelect.superQuery('main');
-smartSelect.superQuery('secondMain');
+console.log(smartSelect.superQuery('main'));
+console.log(smartSelect.superQuery('main'));
+console.log(smartSelect.superQuery('secondMain'));
+console.log(smartSelect.superQuery('#secondMain'));
