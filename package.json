@@ -1,0 +1,15 @@
+{
+  "name": "challenge-memoize-me",
+  "version": "0.0.1",
+  "description": "memoization of document.getElementById() and document.querySelector()",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "github.com/zbuzzeo",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
